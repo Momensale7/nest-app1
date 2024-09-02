@@ -46,6 +46,6 @@ export class ArticleService {
             let article = await this.articleModel.findByIdAndUpdate(id, body, { new: true })
             return { message: "message Updated succesfully", article: article };
         }
-        return  { message: "not found" }
+        return  { message: "  not found" }
     }
 }
