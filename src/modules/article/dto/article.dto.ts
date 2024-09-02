@@ -19,4 +19,6 @@ export class ArticleDto {
     likes: string;
     @IsNotEmpty()
     createdBy: Types.ObjectId;
+    @IsNotEmpty()
+    tags: string[];
 }

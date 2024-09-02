@@ -10,7 +10,7 @@ export class ArticleService {
     constructor(@InjectModel(Article.name) private articleModel: Model<Article>, @InjectModel(User.name) private userModel: Model<User>) { }
 
     async getAllArticle() {
-        const allArticle = await this.articleModel.find().populate('createdBy', '-_id -password')
+        const allArticle = await this.articleModel.find().populate('createdBy tags', 'name email title -_id ')
         return allArticle
     }
 
