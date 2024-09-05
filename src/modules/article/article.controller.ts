@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { ArticleDto } from './dto/article.dto';
+import { AuthGuard } from 'src/core/guards/auth.guard';
 
 @Controller('article')
 export class ArticleController {
@@ -15,7 +16,9 @@ export class ArticleController {
   }
 
   @Post()
-  addArticle(@Body() body:ArticleDto){
+  @UseGuards(AuthGuard)
+  addArticle(@Body() body:ArticleDto,@Req() req:any){
+    body.createdBy=req['userId']
     return this.articleService.addArticle(body)
   }
   @Delete(":id")

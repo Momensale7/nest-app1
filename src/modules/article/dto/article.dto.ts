@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 import { Types } from 'mongoose';
 
 export class ArticleDto {
@@ -18,6 +18,7 @@ export class ArticleDto {
     @IsNotEmpty()
     likes: string;
     @IsNotEmpty()
+    @IsOptional()
     createdBy: Types.ObjectId;
     @IsNotEmpty()
     tags: string[];
